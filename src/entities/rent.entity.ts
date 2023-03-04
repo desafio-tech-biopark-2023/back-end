@@ -6,6 +6,7 @@ import {
   OneToOne,
   JoinColumn,
 } from "typeorm";
+import { Apartment } from "./apartment.entity";
 import { Person } from "./person.entity";
 
 @Entity("rent")
@@ -27,6 +28,12 @@ class Rent {
   })
   @JoinColumn()
   person: Person;
+
+  @OneToOne(() => Apartment, (apartment) => apartment.rent, {
+    onDelete: "CASCADE",
+  })
+  @JoinColumn()
+  apartment: Apartment;
 }
 
 export { Rent };

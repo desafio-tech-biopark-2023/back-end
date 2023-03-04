@@ -8,7 +8,7 @@ import { Building } from "./entities/building.entity";
 import { Apartment } from "./entities/apartment.entity";
 import { Address } from "./entities/address.entity";
 import { Rent } from "./entities/rent.entity";
-import { entityRent1677888955568 } from "./migrations/1677888955568-entityRent";
+import { entityRentWithApartment1677889546593 } from "./migrations/1677889546593-entityRentWithApartment";
 
 const setDataSourceConfig = (): DataSourceOptions => {
   const nodeEnv = process.env.NODE_ENV;
@@ -41,7 +41,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
         Apartment,
         Address,
       ],
-      migrations: [entityRent1677888955568],
+      migrations: [entityRentWithApartment1677889546593],
     };
   }
 
@@ -63,7 +63,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
       Address,
       Rent,
     ],
-    migrations: [entityRent1677888955568],
+    migrations: [entityRentWithApartment1677889546593],
   };
 };
 

@@ -4,9 +4,12 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   ManyToOne,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { Building } from "./building.entity";
 import { Person } from "./person.entity";
+import { Rent } from "./rent.entity";
 
 @Entity("apartment")
 class Apartment {
@@ -57,6 +60,12 @@ class Apartment {
     eager: true,
   })
   building: Building;
+
+  @OneToOne(() => Rent, (rent) => rent.apartment, {
+    onDelete: "CASCADE",
+  })
+  @JoinColumn()
+  rent: Rent;
 }
 
 export { Apartment };
