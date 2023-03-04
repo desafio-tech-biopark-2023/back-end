@@ -1,11 +1,5 @@
 import { instanceToInstance } from "class-transformer";
 import { Request, Response } from "express";
-import {
-  ReqBody,
-  ReqParams,
-  ReqQuery,
-  Resbody,
-} from "../../interfaces/customRequest";
 
 import { listPersonsByTypeService } from "../../services/persons/listPersonsByType.service";
 
