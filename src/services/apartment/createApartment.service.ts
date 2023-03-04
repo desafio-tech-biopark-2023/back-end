@@ -22,8 +22,18 @@ const createApartmentService = async (data: IApartment, idbuilding: string) => {
     id: idbuilding,
   });
 
-  const apartmentSave: Apartment = apartmentRepository.create({
-    ...data,
+  const apartmentSave = apartmentRepository.create({
+    available: data.available,
+    bathrooms: data.bathrooms,
+    dorms: data.dorms,
+    floor: data.floor,
+    number: data.number,
+    private_area: data.private_area,
+    suites: data.suites,
+    total_area: data.total_area,
+    type: data.type,
+    vacancies: data.vacancies,
+    visible: data.visible,
     building: building,
   });
 

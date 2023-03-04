@@ -5,6 +5,7 @@ import {
   OneToMany,
   OneToOne,
   JoinColumn,
+  CreateDateColumn,
 } from "typeorm";
 import { Apartment } from "./apartment.entity";
 import { Person } from "./person.entity";
@@ -18,10 +19,10 @@ class Rent {
   monthly_rent_value: string;
 
   @Column()
-  date_start_rent: Date;
+  date_start_rent: string;
 
   @Column()
-  date_end_rent: Date;
+  date_end_rent: string;
 
   @OneToOne(() => Person, (person) => person.rent, {
     onDelete: "CASCADE",
