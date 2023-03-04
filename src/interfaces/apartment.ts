@@ -1,4 +1,5 @@
-import { IBuilding, ILocator } from "./locator";
+import { IBuilding, ILocator, ILocatorRequest } from "./locator";
+import { IRent } from "./rent";
 
 export interface IApartment {
   type: string;
@@ -13,4 +14,6 @@ export interface IApartment {
   available: string;
   visible: string;
   building?: IBuilding;
+  rent?: IRent;
+  person?: ILocator;
 }

@@ -8,7 +8,7 @@ import { Building } from "./entities/building.entity";
 import { Apartment } from "./entities/apartment.entity";
 import { Address } from "./entities/address.entity";
 import { Rent } from "./entities/rent.entity";
-import { fixNullableRg1677900202430 } from "./migrations/1677900202430-fixNullableRg";
+import { fix3TypeRentEntityDateStart1677958124765 } from "./migrations/1677958124765-fix3TypeRentEntityDateStart";
 
 const setDataSourceConfig = (): DataSourceOptions => {
   const nodeEnv = process.env.NODE_ENV;
@@ -41,7 +41,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
         Apartment,
         Address,
       ],
-      migrations: [fixNullableRg1677900202430],
+      migrations: [fix3TypeRentEntityDateStart1677958124765],
     };
   }
 
@@ -63,7 +63,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
       Address,
       Rent,
     ],
-    migrations: [fixNullableRg1677900202430],
+    migrations: [fix3TypeRentEntityDateStart1677958124765],
   };
 };
 
