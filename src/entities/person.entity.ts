@@ -13,6 +13,7 @@ import { Apartment } from "./apartment.entity";
 import { Building } from "./building.entity";
 import { LegalPerson } from "./legalPerson.entity";
 import { NaturalPerson } from "./naturalPerson.entity";
+import { Rent } from "./rent.entity";
 
 @Entity("person")
 class Person {
@@ -63,6 +64,12 @@ class Person {
   })
   @JoinColumn()
   address: Address;
+
+  @OneToOne(() => Rent, (rent) => rent.person, {
+    onDelete: "CASCADE",
+  })
+  @JoinColumn()
+  rent: Rent;
 
   @OneToMany(() => Building, (building) => building.person)
   building: Building[];

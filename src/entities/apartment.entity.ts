@@ -17,9 +17,6 @@ class Apartment {
   type: string;
 
   @Column()
-  monthly_rent_value: string;
-
-  @Column()
   floor: string;
 
   @Column()
