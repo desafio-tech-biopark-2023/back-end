@@ -5,6 +5,7 @@ import {
   OneToMany,
   OneToOne,
   JoinColumn,
+  ManyToOne,
 } from "typeorm";
 import { Person } from "./person.entity";
 
@@ -13,10 +14,10 @@ class NaturalPerson {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ unique: true })
+  @Column()
   rg: string;
 
-  @Column({ unique: true })
+  @Column()
   cpf: string;
 
   @Column()
@@ -40,10 +41,10 @@ class NaturalPerson {
   @Column()
   nationality: string;
 
-  @OneToOne(() => Person, (person) => person.natural_person, {
+  @ManyToOne(() => Person, (person) => person.natural_person, {
     onDelete: "CASCADE",
+    eager: true,
   })
-  @JoinColumn()
   person: Person;
 }
 

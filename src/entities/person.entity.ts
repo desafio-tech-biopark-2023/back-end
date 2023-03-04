@@ -47,17 +47,11 @@ class Person {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToOne(() => NaturalPerson, (natural_person) => natural_person.person, {
-    onDelete: "CASCADE",
-  })
-  @JoinColumn()
-  natural_person: NaturalPerson;
+  @OneToMany(() => NaturalPerson, (natural_person) => natural_person.person)
+  natural_person: NaturalPerson[];
 
-  @OneToOne(() => LegalPerson, (legal_person) => legal_person.person, {
-    onDelete: "CASCADE",
-  })
-  @JoinColumn()
-  legal_person: LegalPerson;
+  @OneToMany(() => LegalPerson, (legal_person) => legal_person.person)
+  legal_person: LegalPerson[];
 
   @OneToOne(() => Address, (address) => address.person, {
     onDelete: "CASCADE",
