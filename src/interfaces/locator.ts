@@ -12,7 +12,7 @@ export interface ILocatorRequest {
   legal_person?: ILegalPerson[];
   address: IAdress;
   rent: string;
-  building: string;
+  building: IBuilding[];
   apartment: string;
 }
 
@@ -30,7 +30,7 @@ export interface ILocator {
   legal_person?: ILegalPerson;
   address: IAdress;
   rent?: string;
-  building?: string;
+  building?: IBuilding;
   apartment?: string;
 }
 
@@ -63,4 +63,13 @@ export interface IAdress {
   city: string;
   state: string;
   country: string;
+}
+
+export interface IBuilding {
+  name: string;
+  type: string;
+  floors: string;
+  logo: string;
+  apartments_per_floor: string;
+  apartments_available: string;
 }
