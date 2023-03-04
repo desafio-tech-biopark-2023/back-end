@@ -11,7 +11,6 @@ const appRoutes = (app: Express) => {
   app.use("/login", sessionRoutes());
   app.use("/buildings/:id", apartmentsRoutes());
   app.use("/buildings/:id/apartments/:id", rentsRoutes());
-  // app.use("/apartments", );
 };
 
 export { appRoutes };
