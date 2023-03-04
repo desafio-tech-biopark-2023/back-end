@@ -2,20 +2,20 @@ import { Router } from "express";
 import { handleErrorMiddleware } from "../middlewares/handleError.middleware";
 import verifyIsLocator from "../middlewares/verifyIsLocator.middleware";
 import { verifyTokenMiddleware } from "../middlewares/verifyToken.middleware";
-import { createBuildingController } from "../controllers/buildings/createBuilding.controller";
+import { createApartmentController } from "../controllers/apartments/createApartment.controller";
 
-const buildings = Router();
+const apartments = Router();
 
-const buildingRoutes = () => {
-  buildings.post(
-    "",
+const apartmentsRoutes = () => {
+  apartments.post(
+    "/:id/apartments",
     verifyTokenMiddleware,
     verifyIsLocator,
     handleErrorMiddleware,
-    createBuildingController
+    createApartmentController
   );
 
-  return buildings;
+  return apartments;
 };
 
-export { buildingRoutes };
+export { apartmentsRoutes };
