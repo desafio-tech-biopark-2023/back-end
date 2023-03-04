@@ -1,3 +1,21 @@
+export interface ILocatorRequest {
+  name: string;
+  email: string;
+  password: string;
+  telephone: string;
+  naturalPerson: boolean;
+  legalPerson: boolean;
+  type: string;
+  createdAt: Date;
+  updatedAt: Date;
+  natural_person?: INaturalPerson[];
+  legal_person?: ILegalPerson[];
+  address: IAdress;
+  rent: string;
+  building: string;
+  apartment: string;
+}
+
 export interface ILocator {
   name: string;
   email: string;
@@ -11,9 +29,9 @@ export interface ILocator {
   natural_person?: INaturalPerson;
   legal_person?: ILegalPerson;
   address: IAdress;
-  rent: string;
-  building: string;
-  apartment: string;
+  rent?: string;
+  building?: string;
+  apartment?: string;
 }
 
 export interface ILegalPerson {

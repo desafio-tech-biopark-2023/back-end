@@ -1,32 +1,52 @@
 import { Person } from "../../entities/person.entity";
 import AppDataSource from "../../data-source";
-import { ILocator } from "../../interfaces/locator";
+import { ILocator, ILocatorRequest } from "../../interfaces/locator";
 import { Address } from "../../entities/address.entity";
 import { NaturalPerson } from "../../entities/naturalPerson.entity";
 import { LegalPerson } from "../../entities/legalPerson.entity";
 import { hash } from "bcryptjs";
 import { AppError } from "../../errors/appError";
 
-const createLocatorService = async (data: ILocator) => {
+const createPersonService = async (data: ILocator) => {
   const personRepository = AppDataSource.getRepository(Person);
   const addressRepository = AppDataSource.getRepository(Address);
   const naturalPersonRepository = AppDataSource.getRepository(NaturalPerson);
   const legalPersonRepository = AppDataSource.getRepository(LegalPerson);
-
-  const { address } = data;
 
   const persons = await personRepository.find();
   const naturalPersons = await naturalPersonRepository.find();
   const legalPersons = await legalPersonRepository.find();
 
   const emailAlreadyExists = persons.find(
-    (person) => (person.email = data.email)
+    (person) => person.email === data.email
   );
+  if (emailAlreadyExists) {
+    throw new AppError("Email already Exists");
+  }
 
   data.password = await hash(data.password, 10);
 
-  const addressSave = addressRepository.create(address);
+  const addressSave = addressRepository.create(data.address);
   await addressRepository.save(addressSave);
+
+  const address = await addressRepository.findOneBy({ id: addressSave.id });
+
+  const person: Person = personRepository.create({
+    address: address,
+    name: data.name,
+    email: data.email,
+    legalPerson: data.legalPerson,
+    naturalPerson: data.naturalPerson,
+    password: data.password,
+    telephone: data.telephone,
+    type: data.type,
+  });
+
+  await personRepository.save(person);
+
+  await addressRepository.update(address.id, {
+    person: person,
+  });
 
   if (data.legalPerson) {
     const { legal_person } = data;
@@ -39,9 +59,14 @@ const createLocatorService = async (data: ILocator) => {
       throw new AppError("CNPJ already Exists");
     }
 
-    const legalPersonSave = legalPersonRepository.create(legal_person);
+    const legalPersonSave = legalPersonRepository.create({
+      person: person,
+      ...legal_person,
+    });
     await legalPersonRepository.save(legalPersonSave);
-  } else {
+  }
+
+  if (data.naturalPerson) {
     const { natural_person } = data;
 
     const cpfAlreadyExists = naturalPersons.find(
@@ -52,9 +77,14 @@ const createLocatorService = async (data: ILocator) => {
       throw new AppError("CPF already Exists");
     }
 
-    const naturalPersonSave = naturalPersonRepository.create(natural_person);
+    const naturalPersonSave = naturalPersonRepository.create({
+      person: person,
+      ...natural_person,
+    });
     await naturalPersonRepository.save(naturalPersonSave);
   }
+
+  return person;
 };
 
-export { createLocatorService };
+export { createPersonService };

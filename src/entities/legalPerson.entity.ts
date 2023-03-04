@@ -14,7 +14,7 @@ class LegalPerson {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ unique: true })
+  @Column()
   cnpj: string;
 
   @Column()
