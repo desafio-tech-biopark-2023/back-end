@@ -29,10 +29,6 @@ const createBuildingService = async (data: IBuilding, id: string) => {
 
   const building = await buildingRepository.save(buildingSave);
 
-  //   await personRepository.update(personLocator.id, {
-  //     building: buildingSave,
-  //   });
-
   return building;
 };
 
