@@ -41,10 +41,10 @@ class NaturalPerson {
   @Column()
   nationality: string;
 
-  @ManyToOne(() => Person, (person) => person.natural_person, {
+  @OneToOne(() => Person, (person) => person.natural_person, {
     onDelete: "CASCADE",
-    eager: true,
   })
+  @JoinColumn()
   person: Person;
 }
 

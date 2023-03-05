@@ -43,6 +43,7 @@ export interface ILegalPerson {
 }
 
 export interface INaturalPerson {
+  id?: string;
   rg: string;
   cpf: string;
   birth_date: string;

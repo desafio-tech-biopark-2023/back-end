@@ -11,7 +11,7 @@ const apartments = Router();
 
 const apartmentsRoutes = () => {
   apartments.post(
-    "/:id/apartments",
+    "/apartments",
     verifyTokenMiddleware,
     verifyIsLocator,
     handleErrorMiddleware,
