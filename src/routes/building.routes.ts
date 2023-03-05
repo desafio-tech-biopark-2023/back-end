@@ -6,6 +6,7 @@ import { createBuildingController } from "../controllers/buildings/createBuildin
 import { listAllBuildingsController } from "../controllers/buildings/listAllBuildings.controller";
 import { listBuildingByIdController } from "../controllers/buildings/listBuildingById.controller";
 import { deleteBuildingController } from "../controllers/buildings/deleteBuilding.controller";
+import updateBuildingController from "../controllers/buildings/updateBuilding.controller";
 
 const buildings = Router();
 
@@ -19,7 +20,18 @@ const buildingRoutes = () => {
   );
   buildings.get("", listAllBuildingsController);
   buildings.get("/:id", listBuildingByIdController);
-  buildings.delete("/:id", verifyTokenMiddleware, deleteBuildingController);
+  buildings.patch(
+    "/:id",
+    verifyTokenMiddleware,
+    verifyIsLocator,
+    updateBuildingController
+  );
+  buildings.delete(
+    "/:id",
+    verifyTokenMiddleware,
+    verifyIsLocator,
+    deleteBuildingController
+  );
 
   return buildings;
 };
