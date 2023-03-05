@@ -32,12 +32,14 @@ class Building {
   apartments_available: string;
 
   @ManyToOne(() => Person, (person) => person.building, {
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
     eager: true,
   })
   person: Person;
 
-  @OneToMany(() => Apartment, (apartment) => apartment.building)
+  @OneToMany(() => Apartment, (apartment) => apartment.building, {
+    onDelete: "CASCADE",
+  })
   apartment: Apartment[];
 }
 

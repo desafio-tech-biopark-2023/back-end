@@ -34,16 +34,27 @@ const createRentService = async (
 
   const rent = await rentRepository.save(rentSave);
 
-  await personRepository.update(idPerson, {
-    rent: rentSave,
+  const newRent = await rentRepository.findOne({
+    where: {
+      id: rent.id,
+    },
+    relations: {
+      apartment: true,
+      person: true,
+    },
   });
 
-  await apartmentRepository.update(apartment.id, {
-    rent: rentSave,
-    person: person,
+  await personRepository.update(newRent.person.id, {
+    rent: newRent,
   });
 
-  return rent;
+  await apartmentRepository.update(newRent.apartment.id, {
+    rent: newRent,
+    person: newRent.person,
+    available: "Não",
+  });
+
+  return newRent;
 };
 
 export { createRentService };
