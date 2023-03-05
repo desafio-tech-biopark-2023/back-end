@@ -6,6 +6,7 @@ import { createApartmentController } from "../controllers/apartments/createApart
 import { listAllApartmentsController } from "../controllers/apartments/listAllApartments.controller";
 import { listApartmentByIdController } from "../controllers/apartments/listApartmentById.controller";
 import { deleteApartmentController } from "../controllers/apartments/deleteApartment.controller";
+import updateApartmentController from "../controllers/apartments/updateBuilding.controller";
 
 const apartments = Router();
 
@@ -19,7 +20,18 @@ const apartmentsRoutes = () => {
   );
   apartments.get("/apartments", listAllApartmentsController);
   apartments.get("/apartments/:id", listApartmentByIdController);
-  apartments.delete("/apartments/:id", deleteApartmentController);
+  apartments.patch(
+    "/apartments/:id",
+    verifyTokenMiddleware,
+    verifyIsLocator,
+    updateApartmentController
+  );
+  apartments.delete(
+    "/apartments/:id",
+    verifyTokenMiddleware,
+    verifyIsLocator,
+    deleteApartmentController
+  );
 
   return apartments;
 };
