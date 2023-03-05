@@ -73,3 +73,21 @@ export interface IBuilding {
   apartments_per_floor: string;
   apartments_available: string;
 }
+
+export interface IPersonUpdate {
+  name?: string;
+  email?: string;
+  password?: string;
+  telephone?: string;
+  naturalPerson?: boolean;
+  legalPerson?: boolean;
+  type?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  natural_person?: INaturalPerson;
+  legal_person?: ILegalPerson;
+  address?: IAdress;
+  rent?: string;
+  building?: IBuilding;
+  apartment?: string;
+}
