@@ -11,3 +11,9 @@ export interface IRent extends IRentData {
   person: ILocator;
   apartment: IApartment;
 }
+
+export interface IRentPartial {
+  monthly_rent_value?: string;
+  date_start_rent?: string;
+  date_end_rent?: string;
+}

@@ -6,7 +6,7 @@ import { createApartmentController } from "../controllers/apartments/createApart
 import { listAllApartmentsController } from "../controllers/apartments/listAllApartments.controller";
 import { listApartmentByIdController } from "../controllers/apartments/listApartmentById.controller";
 import { deleteApartmentController } from "../controllers/apartments/deleteApartment.controller";
-import updateApartmentController from "../controllers/apartments/updateBuilding.controller";
+import updateApartmentController from "../controllers/apartments/updateApartment.controller";
 
 const apartments = Router();
 
