@@ -14,7 +14,7 @@ const personRoutes = () => {
   persons.get("", listAllProductsController);
   persons.get("/:id", listPersonByIdController);
   persons.patch("/:id", verifyTokenMiddleware, updatePersonController);
-  persons.delete("/:id", deletePersonController);
+  persons.delete("/:id", verifyTokenMiddleware, deletePersonController);
   // persons.get("/", listPersonsByTypeController);
 
   return persons;
