@@ -29,10 +29,10 @@ class LegalPerson {
   @Column()
   regime_type: string;
 
-  @ManyToOne(() => Person, (person) => person.legal_person, {
+  @OneToOne(() => Person, (person) => person.legal_person, {
     onDelete: "CASCADE",
-    eager: true,
   })
+  @JoinColumn()
   person: Person;
 }
 
