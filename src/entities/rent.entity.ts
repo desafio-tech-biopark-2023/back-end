@@ -25,13 +25,13 @@ class Rent {
   date_end_rent: string;
 
   @OneToOne(() => Person, (person) => person.rent, {
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   })
   @JoinColumn()
   person: Person;
 
   @OneToOne(() => Apartment, (apartment) => apartment.rent, {
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   })
   @JoinColumn()
   apartment: Apartment;

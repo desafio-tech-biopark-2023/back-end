@@ -50,19 +50,19 @@ class Apartment {
   visible: string;
 
   @ManyToOne(() => Person, (person) => person.apartment, {
-    onDelete: "CASCADE",
+    onDelete: "NO ACTION",
     eager: true,
   })
   person: Person;
 
   @ManyToOne(() => Building, (building) => building.apartment, {
-    onDelete: "CASCADE",
+    onDelete: "NO ACTION",
     eager: true,
   })
   building: Building;
 
   @OneToOne(() => Rent, (rent) => rent.apartment, {
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   })
   @JoinColumn()
   rent: Rent;

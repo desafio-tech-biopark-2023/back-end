@@ -64,7 +64,7 @@ class Person {
   address: Address;
 
   @OneToOne(() => Rent, (rent) => rent.person, {
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   })
   @JoinColumn()
   rent: Rent;
