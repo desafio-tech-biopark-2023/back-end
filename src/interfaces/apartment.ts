@@ -13,6 +13,7 @@ export interface IApartment {
   private_area: string;
   available: string;
   visible: string;
+  value_rent: string;
   building?: IBuilding;
   rent?: IRent;
   person?: ILocator;

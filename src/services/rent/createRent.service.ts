@@ -27,7 +27,9 @@ const createRentService = async (
   }
 
   const rentSave: Rent = rentRepository.create({
-    ...data,
+    date_end_rent: data.date_end_rent,
+    date_start_rent: data.date_start_rent,
+    monthly_rent_value: apartment.value_rent,
     person: person,
     apartment: apartment,
   });

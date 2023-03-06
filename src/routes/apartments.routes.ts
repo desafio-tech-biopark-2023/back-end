@@ -12,22 +12,22 @@ const apartments = Router();
 
 const apartmentsRoutes = () => {
   apartments.post(
-    "/apartments",
+    "/:id_building",
     verifyTokenMiddleware,
     verifyIsLocator,
     handleErrorMiddleware,
     createApartmentController
   );
-  apartments.get("/apartments", listAllApartmentsController);
-  apartments.get("/apartments/:id", listApartmentByIdController);
+  apartments.get("", listAllApartmentsController);
+  apartments.get("/:id", listApartmentByIdController);
   apartments.patch(
-    "/apartments/:id",
+    "/:id",
     verifyTokenMiddleware,
     verifyIsLocator,
     updateApartmentController
   );
   apartments.delete(
-    "/apartments/:id",
+    "/:id",
     verifyTokenMiddleware,
     verifyIsLocator,
     deleteApartmentController

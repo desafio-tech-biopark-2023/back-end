@@ -7,9 +7,9 @@ import { createApartmentService } from "../../services/apartment/createApartment
 const createApartmentController = async (req: Request, res: Response) => {
   try {
     const data = req.body;
-    const { idBuilding } = req.params;
+    const { id_building } = req.params;
 
-    const createdApartment = await createApartmentService(data, idBuilding);
+    const createdApartment = await createApartmentService(data, id_building);
 
     return res.status(201).json(instanceToInstance(createdApartment));
   } catch (error) {

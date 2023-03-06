@@ -34,6 +34,7 @@ const createApartmentService = async (data: IApartment, idbuilding: string) => {
     type: data.type,
     vacancies: data.vacancies,
     visible: data.visible,
+    value_rent: data.value_rent,
     building: building,
   });
 

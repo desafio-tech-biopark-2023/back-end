@@ -7,10 +7,10 @@ import { instanceToInstance } from "class-transformer";
 const createRentController = async (req: Request, res: Response) => {
   try {
     const data = req.body;
-    const { idApartment } = req.params;
+    const { id_apartment } = req.params;
     const idPerson = req.user.id;
 
-    const createdRent = await createRentService(data, idApartment, idPerson);
+    const createdRent = await createRentService(data, id_apartment, idPerson);
 
     return res.status(201).json(instanceToInstance(createdRent));
   } catch (error) {
