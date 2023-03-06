@@ -12,12 +12,12 @@ const rents = Router();
 
 const rentsRoutes = () => {
   rents.post(
-    "/",
+    "/:id_apartment",
     verifyTokenMiddleware,
     handleErrorMiddleware,
     createRentController
   );
-  rents.get("/", listAllRentsController);
+  rents.get("", listAllRentsController);
   rents.get("/:id", listRentByIdController);
   rents.patch(
     "/:id",

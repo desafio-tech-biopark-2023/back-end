@@ -49,6 +49,9 @@ class Apartment {
   @Column()
   visible: string;
 
+  @Column()
+  value_rent: string;
+
   @ManyToOne(() => Person, (person) => person.apartment, {
     onDelete: "NO ACTION",
     eager: true,
