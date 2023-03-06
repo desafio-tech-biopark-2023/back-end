@@ -46,12 +46,25 @@ $ git clone https://github.com/desafio-tech-biopark-2023/back-end.git
 # Acesse a pasta do projeto no seu terminal/cmd
 $ cd back-end
 
+# Crie um banco de dados PostgreSQL em sua máquina com o nome de sua preferência
+
+### Após clonar o repositorio para a sua maquina, é preciso adicionar um arquivo chamado .env e colocar as seguintes informações nele
+
+SECRET_KEY=sua_secret_key
+
+POSTGRES_HOST=localhost
+POSTGRES_USER=seu_usuario_postgres
+POSTGRES_PASSWORD=sua_senha_postgres
+POSTGRES_PORT=sua_porta_postgres
+POSTGRES_DB=_seu_banco_de_dados_postgres
+
+
 # Instale as dependências
 $ yarn
 
-# Crie um banco de dados PostgreSQL em sua máquina com o nome de sua preferência
+### Após ter todas as dependências instaladas você poderá rodar as migrações afim de persistir as tabelas no banco de dados atráves do seguinte comando `yarn typeorm migration:run -d src/data-source.ts`
 
-# Na pasta do projeto modifique o arquivo .env.example, insira as informações solicitadas e salve o arquivo
+### Se até aqui deu tudo certo, rode o comando `yarn dev` para iniciar o servidor e poder consumir a API
 
 # Execute a aplicação em modo de desenvolvimento
 $ yarn dev
@@ -91,3 +104,4 @@ $ yarn dev
 Este projeto esta sob a licença MIT.
 
 Feito com ❤️ por Patrick Cordeiro 👋🏽 [Entre em contato!](https://www.linkedin.com/in/patrickcordeiro/)
+
