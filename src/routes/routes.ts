@@ -9,8 +9,8 @@ const appRoutes = (app: Express) => {
   app.use("/persons", personRoutes());
   app.use("/buildings", buildingRoutes());
   app.use("/login", sessionRoutes());
-  app.use("/buildings/:id", apartmentsRoutes());
-  app.use("/buildings/:id/apartments/:id", rentsRoutes());
+  app.use("/apartments", apartmentsRoutes());
+  app.use("/rents", rentsRoutes());
 };
 
 export { appRoutes };

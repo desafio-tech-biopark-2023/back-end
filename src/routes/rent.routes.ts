@@ -12,21 +12,21 @@ const rents = Router();
 
 const rentsRoutes = () => {
   rents.post(
-    "/rents",
+    "/",
     verifyTokenMiddleware,
     handleErrorMiddleware,
     createRentController
   );
-  rents.get("/rents", listAllRentsController);
-  rents.get("/rents/:id", listRentByIdController);
+  rents.get("/", listAllRentsController);
+  rents.get("/:id", listRentByIdController);
   rents.patch(
-    "/rents/:id",
+    "/:id",
     verifyTokenMiddleware,
     verifyIsLocator,
     updateRentController
   );
   rents.delete(
-    "/rents/:id",
+    "/:id",
     verifyTokenMiddleware,
     verifyIsLocator,
     deleteRentController
