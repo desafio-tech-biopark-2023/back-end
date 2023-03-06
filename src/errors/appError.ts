@@ -1,4 +1,5 @@
-class AppError extends Error {
+import { Response } from "express";
+export class AppError extends Error {
   statusCode: number;
 
   constructor(message: string, statusCode = 400) {
@@ -8,4 +9,10 @@ class AppError extends Error {
   }
 }
 
-export { AppError };
+export const handleError = (err: AppError, res: Response) => {
+  const { statusCode, message } = err;
+
+  return res.status(statusCode).json({
+    message,
+  });
+};
